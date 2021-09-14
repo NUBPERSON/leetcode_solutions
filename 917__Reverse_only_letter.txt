@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string reverseOnlyLetters(string s) {
+        int i=0;
+        int j=s.length()-1;
+        while(i<j){
+            while(i<j && !( (s[i]-'a')>=0 && (s[i]-'a')<=25) && !( (s[i]-'A')>=0 && (s[i]-'A')<=25)   )
+                i++;
+            while(i<j && !( (s[j]-'a')>=0 && (s[j]-'a')<=25) && !( (s[j]-'A')>=0 && (s[j]-'A')<=25)   )
+                j--;
+            if(i<j){
+              
+                swap(s[i],s[j]);  
+                i++;
+                j--;
+            }
+        }
+        return s;
+    }
+};
