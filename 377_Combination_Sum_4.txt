@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int combinationSum4(vector<int>& nums, int target) {
+        vector<unsigned long long int>dp(target+1,0);
+         for(int t=0;t<=target;t++){
+             for(int a:nums){
+           
+                if(t==0){
+                    dp[t]=1;
+                }
+                if(t-a>=0){
+                    dp[t]+=dp[t-a];
+                }
+            }
+        }
+        return dp[target];
+    }
+};
