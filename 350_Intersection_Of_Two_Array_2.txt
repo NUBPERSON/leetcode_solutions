@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int,int>m;
+        unordered_map<int,int>u;
+        for(int i=0;i<nums1.size();i++)
+             m[nums1[i]]++;
+        for(int i=0;i<nums2.size();i++){
+            u[nums2[i]]++;
+        }
+        vector<int>ans;
+        for(auto a:m){
+            int c=a.first;
+            int d=min(u[c],a.second);
+            for(int i=0;i<d;i++){
+                ans.push_back(c);
+            }
+        }
+        return ans;
+    }
+};
