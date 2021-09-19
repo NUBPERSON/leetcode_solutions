@@ -17,7 +17,7 @@ public:
                 ans+=even;
                 odd++;
             }
-         //   cout<<ans;
+        
         }
         return ans%(1000000007);
     }
