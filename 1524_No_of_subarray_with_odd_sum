@@ -13,6 +13,8 @@ public:
                 even++;
             }
             else{
+
+                
                 ans+=even;
                 odd++;
             }
