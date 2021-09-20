@@ -44,6 +44,7 @@ public:
                 board[i][j]=board[i][j]/10;
                 
             }}
+            
         
     //    return board;
     }
