@@ -43,8 +43,9 @@ public:
             for(int j=0;j<m;j++){
                 board[i][j]=board[i][j]/10;
                 
+                
             }}
-            
+
         
     //    return board;
     }
