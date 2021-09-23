@@ -1,6 +1,7 @@
 # leetcode_solutions
    solution added 
      3
+     130
      289
      350
      377
