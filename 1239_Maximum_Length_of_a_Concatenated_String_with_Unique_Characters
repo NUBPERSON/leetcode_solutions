@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int ans;
+    void helper(int i,vector<string>&arr,vector<int>&freq,int calc){
+        if(i==arr.size())
+            return;
+        
+        helper(i+1,arr,freq,calc);
+    int z=0;
+        for(int j=0;j<arr[i].length();j++){
+            if(freq[arr[i][j]-'a']!=0)
+                z=1;
+                
+        }
+        vector<int>dup(26,0);
+          for(int j=0;j<arr[i].length();j++){
+            if(dup[arr[i][j]-'a']==0)
+                dup[arr[i][j]-'a']++;
+            else{
+                z=1;
+            }  
+                
+        }
+        if(z==0){
+             
+            for(int j=0;j<arr[i].length();j++){
+                   freq[arr[i][j]-'a']=1;
+                 }
+            int d=calc+arr[i].length();
+            ans=max(ans,d);
+             helper(i+1,arr,freq,d);
+              for(int j=0;j<arr[i].length();j++){
+                   freq[arr[i][j]-'a']=0;
+                }
+            }
+           
+    }
+    int maxLength(vector<string>& arr) {
+        ans=0;
+        vector<int>freq(26,0);
+        helper(0,arr,freq,0);
+        return ans;
+    }
+};
