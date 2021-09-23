@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string largestMerge(string a, string b) {
+        int i=0,j=0;
+        string ans="";
+        while(i<a.size() || j<b.size()){
+            if(i==a.size()){
+                ans+=b.substr(j);
+                break;
+            }
+            else if(j==b.size()){
+                 ans+=a.substr(i);
+                break;
+            }
+            else{
+                if(a.substr(i)>b.substr(j)){
+                    ans+=a[i];
+                   i++;
+                }else{
+                    ans+=b[j];
+                    j++;
+                }
+            }
+            
+            
+        }
+        return ans;
+    }
+};
