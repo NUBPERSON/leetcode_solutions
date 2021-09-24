@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string breakPalindrome(string p) {
+        if(p.length()==1)
+            return "";
+        int z=0;
+        for(int i=0;i<p.length()/2;i++){
+            if(p[i]=='a')
+                continue;
+            else{
+                z=1;
+                p[i]='a';
+              break;}
+        }
+        if(z==0){
+            p[p.length()-1]='b';
+        }
+        return p;
+        
+    }
+};
