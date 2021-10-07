@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& in) {
+     sort(in.begin(),in.end());
+        vector<vector<int>>ans;
+        ans.push_back({in[0][0],in[0][1]});
+        int j=0;
+       for(int i=1;i<in.size();i++){
+           if(ans[j][1]<in[i][0])
+           {
+            ans.push_back({in[i][0],in[i][1]});
+               j++;
+           }
+           else{
+               ans[j][1]=max(ans[j][1],in[i][1]);
+               
+           }
+       } 
+        return ans;
+    }
+};
