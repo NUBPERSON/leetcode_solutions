@@ -1,0 +1,63 @@
+class MyHashMap {
+public:
+    class node{
+        public:
+        int k;
+        int v;
+        node* next;
+        node(int ke,int va){
+            k=ke;
+            v=va;
+            next=NULL;
+        }
+            
+    };
+    vector<node*>arr=vector<node*>(1001, new node(-1,-1));
+    MyHashMap() {
+        
+    }
+    int index(int key){
+        return key%1001; 
+    }
+    node* find(int i,int ke){
+        node* cur=arr[i];
+        node* prev;
+        while(cur && cur->k!=ke){
+            prev=cur;
+            cur=cur->next;
+            
+        }
+        return prev;
+    }
+    
+    void put(int key, int value) {
+        int i=index(key);
+        node* here=find(i,key);
+        if(here->next){
+            here->next->v=value;
+        }
+        else
+           here->next=new node(key,value); 
+        
+    }
+    
+    int get(int key) {
+        int i=index(key);
+        node* here=find(i,key);
+        if(here->next)
+        return here->next->v;
+        return -1;
+        
+    }
+    
+    void remove(int key) {
+           int i=index(key);
+        node* here=find(i,key);
+        if(here && here->next && here->next->next)
+            here->next=here->next->next;
+        else
+            here->next=NULL;
+        
+    }
+    
+};
