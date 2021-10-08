@@ -1,0 +1,44 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int sr=0;
+        int sc=0;
+        int er=n-1;
+        int ec=n-1;
+        vector<vector<int>>mat(n,vector<int>(n,0));
+        int cnt=1;
+        while(cnt<=(n*n) ){
+            int i=sc;
+            while(i<=ec){
+               mat[sr][i]=cnt;
+                cnt++;
+                i++;
+            }
+            sr++;
+            int j=sr;
+            while(j<=er){
+               mat[j][ec]=cnt;
+                cnt++;
+                j++;
+            }
+            ec--;
+            i=ec;
+            while(i>=sc){
+                mat[er][i]=cnt;
+                cnt++;
+                i--;
+            }
+            er--;
+            j=er;
+            while(j>=sr){
+                mat[j][sc]=cnt;
+                cnt++;
+                j--;
+            }
+            sc++;
+            
+                
+        }
+        return mat;
+    }
+};
