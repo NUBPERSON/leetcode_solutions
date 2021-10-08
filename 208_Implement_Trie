@@ -1,0 +1,74 @@
+class Trie {
+public:
+    class node{
+        public:
+        char v;
+        vector<node*>children=vector<node*>(26,NULL);
+        int end=0;
+        node(char va,int e){
+            v=va;
+            end=e;
+        }
+    };
+    node* st=NULL;
+    Trie() {
+         st=new node('*',0);
+    }
+    
+    void helper(node*st,string word,int i){
+        if(i==word.length()){
+            st->end=1;
+            return;
+        }
+        if(st->children[word[i]-'a']!=NULL){
+             helper(st->children[word[i]-'a'],word,i+1);
+        }
+        else{
+            node* op=new node(word[i],0);
+             st->children[word[i]-'a']=op;
+             helper(st->children[word[i]-'a'],word,i+1);
+        }
+    } 
+    void insert(string word) {
+        helper(st,word,0);
+    }
+    bool helper2(node*st,string word,int i){
+        if(i==word.length()){
+            if(st->end==1)
+                return true;
+            return false;
+        }
+        bool ans=false;
+        if(st->children[word[i]-'a']!=NULL){
+         ans=ans|| helper2(st->children[word[i]-'a'],word,i+1);
+        }
+        return ans;
+        
+    }
+    bool search(string word) {
+       return helper2(st,word,0);
+    }
+    bool helper3(node*st,string word,int i)
+    {
+        if(i==word.length()){
+              return true;
+        }
+        bool ans=false;
+        if(st->children[word[i]-'a']!=NULL){
+         ans=ans|| helper3(st->children[word[i]-'a'],word,i+1);
+        }
+        return ans;
+        
+    }
+    bool startsWith(string prefix) {
+        return helper3(st,prefix,0);
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */
