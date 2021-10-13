@@ -1,0 +1,19 @@
+class Solution {
+public:
+     TreeNode* helper(vector<int>& preorder,int s,int e){
+         if(s>e)
+             return NULL;
+         TreeNode* root=new TreeNode(preorder[s]);
+         int i=0;
+         for( i=s+1;i<=e && preorder[i]<root->val ;i++){
+             
+         }
+         root->left=helper(preorder,s+1,i-1);
+         root->right=helper(preorder,i,e);
+         
+         return root;
+     }
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        return  helper(preorder,0,preorder.size()-1);   
+    }
+};
