@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+          vector<int>ch(26,0);
+          vector<int>temp(26,0);
+        if(s.length()<p.length())
+            return {};
+           for(int i=0;i<p.length();i++){
+               ch[p[i]-'a']++;
+               temp[s[i]-'a']++;
+           }
+          int j=p.length();
+          int i=0;
+        vector<int>ans;
+          while(j<=s.length()){
+              bool res=true;
+              for(int i=0;i<26;i++){
+                  if(ch[i]!=temp[i]){
+                      res=false;
+                      break;
+                  }
+              }
+              if(res)
+                  ans.push_back(i);
+              if(j!=s.length())
+               temp[s[j]-'a']++;
+                temp[s[i]-'a']--;
+               i++;
+               j++;
+          }
+        return ans;
+    }
+};
